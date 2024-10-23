@@ -35,7 +35,7 @@ nav {
   left: 0;
   width: 100%;
   z-index: 10;
-  background-color: #333;
+  background-color: white;
   /* ปรับสีพื้นหลังตามที่ต้องการ */
   padding: 1rem;
 }

@@ -1,8 +1,28 @@
-<template>
 
+<template>
   <div class="bg-white">
     <header class="absolute inset-x-0 top-0 z-50">
-      <Navbar />
+      <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+        <div class="flex lg:flex-1">
+          <a href="#" class="-m-1.5 p-1.5">
+            <span class="sr-only">Your Company</span>
+            <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="" />
+          </a>
+        </div>
+        <div class="flex lg:hidden">
+          <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700" @click="mobileMenuOpen = true">
+            <span class="sr-only">Open main menu</span>
+            <Bars3Icon class="h-6 w-6" aria-hidden="true" />
+          </button>
+        </div>
+        <div class="hidden lg:flex lg:gap-x-12">
+          <a v-for="item in navigation" :key="item.name" :href="item.href" class="text-sm font-semibold leading-6 text-gray-900">{{ item.name }}</a>
+        </div>
+        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+          <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Contact <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </nav>      
+      
       <Dialog class="lg:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
         <div class="fixed inset-0 z-50" />
         <DialogPanel
@@ -36,25 +56,27 @@
       </Dialog>
     </header>
 
+    
+
     <div class="relative isolate px-6 pt-14 lg:px-8">
+      <img :src="nb_1" alt="" class="absolute w-auto  object-cover" style="height: 42rem; z-index: -100; margin-left: -200px; margin-top: 7rem;">
+      <img :src="nb_2" alt="" class="absolute w-auto  object-cover" style="height: 36rem; z-index: -100; margin-left: 1300px; margin-top: 13rem;">
+      <img :src="nb_3" alt="" class="absolute w-auto  object-cover opacity-50" style="height: 70rem; z-index: -100; margin-left: 350px; margin-top: -21rem;">
+
       <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
         aria-hidden="true">
         <div
           class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
           style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" />
       </div>
-      <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+      <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56 -mt-16 ">
         <div class="hidden sm:mb-8 sm:flex sm:justify-center">
-          <div
-            class="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-            Announcing our next round of funding. <a href="#" class="font-semibold text-indigo-600"><span
-                class="absolute inset-0" aria-hidden="true" />Read more <span aria-hidden="true">&rarr;</span></a>
-          </div>
+
         </div>
         <div class="text-center">
           <h1 class="text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">Web Port-Folio</h1>
-          <p class="mt-8 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8 kanit-regular">
-            นี่คือเว็บไซต์ที่สรา้งขึ้นเพื่อเก็บผลงานต่างๆของ JayZcodeditor </p>
+          <p class="mt-8 text-pretty text-lg font-medium text-black sm:text-xl/8 kanit-regular">
+            This is a website created to store JayZcodeditor's work. </p>
           <div class="mt-10 flex items-center justify-center gap-x-6">
             <a href="#"
               class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ">Get
@@ -74,10 +96,60 @@
     </div>
   </div>
 
+
+
+  <div class="bg-white">
+    <div class="pt-6 grid grid-cols-1 lg:grid-cols-2 mt-40">      
+      <!-- Image gallery -->
+      <div class="mx-[15%] mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2  lg:gap-x-8 lg:px-8">
+        <div class="aspect-h-3 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
+          <img :src="product.images[0].src" :alt="product.images[0].alt" class="h-full w-full object-cover object-center" />
+        </div>
+        <div class="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
+          <div class="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
+            <img :src="product.images[1].src" :alt="product.images[1].alt" class="h-full w-full object-cover object-center" />
+          </div>
+          <div class="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
+            <img :src="product.images[2].src" :alt="product.images[2].alt" class="h-full w-full object-cover object-center" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Product info -->
+      <div class="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
+        <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8 mt-56">
+          <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{{ product.name }}</h1>
+        </div>
+
+
+        <div class="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
+          <!-- Description and details -->
+          <div>
+            <h3 class="sr-only">Description</h3>
+
+            <div class="space-y-6">
+              <p class="text-base text-gray-900 text-left">{{ product.description }}</p>
+            </div>
+          </div>
+
+        
+
+          <div class="mt-10">
+            <h2 class="text-sm font-medium text-gray-900">Hobby</h2>
+
+            <div class="mt-4 space-y-6">
+              <p class="text-sm text-gray-600">{{ product.details }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
   <div class="bg-white">
     <div class="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
       <div>
-        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl kanit-semibold">ผลงานที่ผ่านมา</h2>
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl kanit-semibold">Past work</h2>
         <p class="mt-4 text-gray-500"></p>
 
         <dl class="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
@@ -88,19 +160,19 @@
         </dl>
       </div>
       <div class="grid grid-cols-2 grid-rows-2 gap-4 sm:gap-6 lg:gap-8">
-  <img src="https://tailwindui.com/plus/img/ecommerce-images/product-feature-03-detail-01.jpg"
+  <img :src="cp_1"
        alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
        class="item-tl rounded-lg bg-gray-100" />
   
-  <img src="https://tailwindui.com/plus/img/ecommerce-images/product-feature-03-detail-02.jpg"
+  <img :src="fn_1"
        alt="Top down view of walnut card tray with embedded magnets and card groove."
        class="item-tr rounded-lg bg-gray-100" />
   
-  <img src="https://tailwindui.com/plus/img/ecommerce-images/product-feature-03-detail-03.jpg"
+  <img :src="da_1"
        alt="Side of walnut card tray with card groove and recessed card area."
        class="item-bl rounded-lg bg-gray-100" />
   
-  <img src="https://tailwindui.com/plus/img/ecommerce-images/product-feature-03-detail-04.jpg"
+  <img :src="ux_1"
        alt="Walnut card tray filled with cards and card angled in dedicated groove."
        class="item-br rounded-lg bg-gray-100" />
 </div>
@@ -108,80 +180,21 @@
     </div>
   </div>
 
-  <div class="bg-gray-50 py-24 sm:py-32">
-    <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
-      <h2 class="text-center text-base/7 font-semibold text-indigo-600">Deploy faster</h2>
-      <p class="mx-auto mt-2 max-w-lg text-balance text-center text-4xl font-semibold tracking-tight text-gray-950 sm:text-5xl">Everything you need to deploy your app</p>
-      <div class="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2">
-        <div class="relative lg:row-span-2">
-          <div class="absolute inset-px rounded-lg bg-white lg:rounded-l-[2rem]" />
-          <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] lg:rounded-l-[calc(2rem+1px)]">
-            <div class="px-8 pb-3 pt-8 sm:px-10 sm:pb-0 sm:pt-10">
-              <p class="mt-2 text-lg/7 font-medium tracking-tight text-gray-950 max-lg:text-center">Mobile friendly</p>
-              <p class="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.</p>
-            </div>
-            <div class="relative min-h-[30rem] w-full grow [container-type:inline-size] max-lg:mx-auto max-lg:max-w-sm">
-              <div class="absolute inset-x-10 bottom-0 top-10 overflow-hidden rounded-t-[12cqw] border-x-[3cqw] border-t-[3cqw] border-gray-700 bg-gray-900 shadow-2xl">
-                <img class="size-full object-cover object-top" src="https://tailwindui.com/plus/img/component-images/bento-03-mobile-friendly.png" alt="" />
-              </div>
-            </div>
-          </div>
-          <div class="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 lg:rounded-l-[2rem]" />
-        </div>
-        <div class="relative max-lg:row-start-1">
-          <div class="absolute inset-px rounded-lg bg-white max-lg:rounded-t-[2rem]" />
-          <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)]">
-            <div class="px-8 pt-8 sm:px-10 sm:pt-10">
-              <p class="mt-2 text-lg/7 font-medium tracking-tight text-gray-950 max-lg:text-center">Performance</p>
-              <p class="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">Lorem ipsum, dolor sit amet consectetur adipisicing elit maiores impedit.</p>
-            </div>
-            <div class="flex flex-1 items-center justify-center px-8 max-lg:pb-12 max-lg:pt-10 sm:px-10 lg:pb-2">
-              <img class="w-full max-lg:max-w-xs" src="https://tailwindui.com/plus/img/component-images/bento-03-performance.png" alt="" />
-            </div>
-          </div>
-          <div class="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 max-lg:rounded-t-[2rem]" />
-        </div>
-        <div class="relative max-lg:row-start-3 lg:col-start-2 lg:row-start-2">
-          <div class="absolute inset-px rounded-lg bg-white" />
-          <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)]">
-            <div class="px-8 pt-8 sm:px-10 sm:pt-10">
-              <p class="mt-2 text-lg/7 font-medium tracking-tight text-gray-950 max-lg:text-center">Security</p>
-              <p class="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">Morbi viverra dui mi arcu sed. Tellus semper adipiscing suspendisse semper morbi.</p>
-            </div>
-            <div class="flex flex-1 items-center [container-type:inline-size] max-lg:py-6 lg:pb-2">
-              <img class="h-[min(152px,40cqw)] object-cover object-center" src="https://tailwindui.com/plus/img/component-images/bento-03-security.png" alt="" />
-            </div>
-          </div>
-          <div class="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5" />
-        </div>
-        <div class="relative lg:row-span-2">
-          <div class="absolute inset-px rounded-lg bg-white max-lg:rounded-b-[2rem] lg:rounded-r-[2rem]" />
-          <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] max-lg:rounded-b-[calc(2rem+1px)] lg:rounded-r-[calc(2rem+1px)]">
-            <div class="px-8 pb-3 pt-8 sm:px-10 sm:pb-0 sm:pt-10">
-              <p class="mt-2 text-lg/7 font-medium tracking-tight text-gray-950 max-lg:text-center">Powerful APIs</p>
-              <p class="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">Sit quis amet rutrum tellus ullamcorper ultricies libero dolor eget sem sodales gravida.</p>
-            </div>
-            <div class="relative min-h-[30rem] w-full grow">
-              <div class="absolute bottom-0 left-10 right-0 top-10 overflow-hidden rounded-tl-xl bg-gray-900 shadow-2xl">
-                <div class="flex bg-gray-800/40 ring-1 ring-white/5">
-                  <div class="-mb-px flex text-sm font-medium leading-6 text-gray-400">
-                    <div class="border-b border-r border-b-white/20 border-r-white/10 bg-white/5 px-4 py-2 text-white">NotificationSetting.jsx</div>
-                    <div class="border-r border-gray-600/10 px-4 py-2">App.jsx</div>
-                  </div>
-                </div>
-                <div class="px-6 pb-14 pt-6">
-                  <!-- Your code example -->
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 max-lg:rounded-b-[2rem] lg:rounded-r-[2rem]" />
-        </div>
+  <div class="bg-white py-24 sm:py-32 -mt-36">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <h2 class="text-center text-lg font-semibold leading-8 text-gray-900">Trusted by the world’s most innovative teams</h2>
+      <div class="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-6">
+        <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" :src="l1" alt="Transistor" width="158" height="158" />
+        <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" :src="l2" alt="Reform" width="158" height="158" />
+        <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" :src="l3" alt="Tuple" width="158" height="158" />
+        <img class="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1" :src="l4" alt="SavvyCal" width="158" height="158" />
+        <img class="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1" :src="l5" alt="Statamic" width="158" height="158" />
+        <img class="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1" :src="l6" alt="Statamic" width="158" height="158" />
       </div>
     </div>
   </div>
 
-  <div class="bg-white py-24 sm:py-32 -mt-50">
+  <!-- <div class="bg-white py-24 sm:py-32 -mt-50">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="mx-auto max-w-2xl lg:text-center">
         <h2 class="text-base font-semibold leading-7 text-indigo-600">Deploy faster</h2>
@@ -202,9 +215,9 @@
         </dl>
       </div>
     </div>
-  </div>
+  </div> -->
 
-  <div class="bg-white py-24 sm:py-32">
+  <!-- <div class="bg-white py-24 sm:py-32">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="mx-auto max-w-2xl lg:mx-0">
         <h2 class="text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl text-left">From the blog</h2>
@@ -240,7 +253,7 @@
         </article>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div>
     <div class=" sm:px-0">
@@ -251,19 +264,19 @@
       <dl class="divide-y divide-gray-100">
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <dt class="text-sm font-medium leading-6 text-gray-900">Full name</dt>
-          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Margot Foster</dd>
+          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Thammakit Chotchuang</dd>
         </div>
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <dt class="text-sm font-medium leading-6 text-gray-900">Application for</dt>
-          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Backend Developer</dd>
+          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Full Stack Developer</dd>
         </div>
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <dt class="text-sm font-medium leading-6 text-gray-900">Email address</dt>
-          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">margotfoster@example.com</dd>
+          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Jthammakit2546@gmail.com</dd>
         </div>
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <dt class="text-sm font-medium leading-6 text-gray-900">Salary expectation</dt>
-          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">$120,000</dd>
+          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">฿22,000</dd>
         </div>
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <dt class="text-sm font-medium leading-6 text-gray-900">About</dt>
@@ -277,25 +290,13 @@
                 <div class="flex w- flex-1 items-center">
                   <PaperClipIcon class="h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
                   <div class="ml-4 flex flex-1 gap-2">
-                    <span class="truncate font-medium">resume_back_end_developer.pdf</span>
-                    <span class="flex-shrink-0 text-gray-400">2.4mb</span>
+                    <span class="truncate font-medium">resume_Thammakit.pdf</span>
+                    <span class="flex-shrink-0 text-gray-400">211 KB </span>
                   </div>
                 </div>
                 <div class="ml-4 flex-shrink-0">
-                  <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Download</a>
-                </div>
-              </li>
-              <li class="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
-                <div class="flex w-0 flex-1 items-center">
-                  <PaperClipIcon class="h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
-                  <div class="ml-4 flex min-w-0 flex-1 gap-2">
-                    <span class="truncate font-medium">coverletter_back_end_developer.pdf</span>
-                    <span class="flex-shrink-0 text-gray-400">4.5mb</span>
-                  </div>
-                </div>
-                <div class="ml-4 flex-shrink-0">
-                  <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Download</a>
-                </div>
+        <a href="#" @click.prevent="downloadFile" class="font-medium text-indigo-600 hover:text-indigo-500">Download</a>
+      </div>
               </li>
             </ul>
           </dd>
@@ -310,6 +311,18 @@
 </template>
 
 <script setup>
+
+const downloadFile = () => {
+  const fileUrl = pdf; // Path relative to the public folder
+  const link = document.createElement('a');
+  link.href = fileUrl;
+  link.setAttribute('download', 'resume_thammakit_full_stack_developer.pdf'); // Specify the file name for download
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link); // Clean up
+};
+
+
 import { ref } from 'vue'
 import { Dialog, DialogPanel } from '@headlessui/vue'
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
@@ -317,54 +330,98 @@ import { PaperClipIcon } from '@heroicons/vue/20/solid'
 import Navbar from '../components/Navbar.vue'
 import Footer from '../components/footer.vue'
 
-
-
-const navigation = [
-  { name: 'Product', href: '#' },
-  { name: 'Features', href: '#' },
-  { name: 'Marketplace', href: '#' },
-  { name: 'Company', href: '#' },
-]
-
 const mobileMenuOpen = ref(false)
+
+import { StarIcon } from '@heroicons/vue/20/solid'
+import { RadioGroup, RadioGroupOption } from '@headlessui/vue'
+
+// นำเข้าภาพจาก assets
+import pdf from '../assets/Resume/resume_thammakit_full_stack_developer.pdf'
+
+import image1 from '../assets/image/4.jpg';
+import image2 from '../assets/image/1.jpg';
+import image3 from '../assets/image/3.jpg';
+
+import cp_1 from '../assets/image/CP_system/Screenshot 2024-10-23 121857.png'
+import fn_1 from '../assets/image/final_Project/image (1).png'
+import da_1 from '../assets/image/Data_analysis/Screenshot 2024-10-23 123951.png'
+import ux_1 from '../assets/image/ux_design/Screenshot 2024-10-23 124149.png'
+
+import nb_1 from '../assets/image/nonbg.png'
+import nb_2 from '../assets/image/nonbg2.png'
+import nb_3 from '../assets/image/nonbg3.png'
+
+
+import l1 from '../assets/image/logoicon/Tailwind_CSS.png'
+import l2 from '../assets/image/logoicon/vue.png'
+import l3 from '../assets/image/logoicon/React.png'
+import l4 from '../assets/image/logoicon/nextjs.png'
+import l5 from '../assets/image/logoicon/Docker.png'
+import l6 from '../assets/image/logoicon/php.png'
+const product = {
+  name: 'Thammakit Chotchuang',
+  images: [
+    {
+      src: image1,
+      alt: 'Two each of gray, white, and black shirts laying flat.',
+    },
+    {
+      src: image2,
+      alt: 'Model wearing plain black basic tee.',
+    },
+    {
+      src: image3,
+      alt: 'Model wearing plain gray basic tee.',
+    }
+  ],
+  description:
+    '    Thammakit Chotchuang is a motivated informatics graduate who is passionate about programming, web development, IoT, and AI. He possesses strong skills in database management, UX/UI design, and Web application development. Known for his analytical mindset, he enjoys solving complex problems and actively seeks new knowledge to enhance his expertise continuously.',
+  highlights: [
+    'Hand cut and sewn locally',
+    'Dyed with our proprietary colors',
+    'Pre-washed & pre-shrunk',
+    'Ultra-soft 100% cotton',
+  ],
+  details:
+    'Listen to music, play games, watch movies and read books.',
+}
+
 
 
 import { ArrowPathIcon, CloudArrowUpIcon, FingerPrintIcon, LockClosedIcon } from '@heroicons/vue/24/outline'
 
-// const features = [
-//   { name: 'Origin', description: 'Designed by Good Goods, Inc.' },
-//   { name: 'Material', description: 'Solid walnut base with rare earth magnets and powder coated steel card cover' },
-//   { name: 'Dimensions', description: '6.25" x 3.55" x 1.15"' },
-//   { name: 'Finish', description: 'Hand sanded and finished with natural oil' },
-//   { name: 'Includes', description: 'Wood card tray and 3 refill packs' },
-//   { name: 'Considerations', description: 'Made from natural materials. Grain and color vary with each item.' },
-// ]
-
 const features = [
   {
-    name: 'Push to deploy',
+    name: 'Web Application',
     description:
-      'Morbi viverra dui mi arcu sed. Tellus semper adipiscing suspendisse semper morbi. Odio urna massa nunc massa.',
+      'Vue React Javascript TypeScript Tailwind Bootstrap Vite',
     icon: CloudArrowUpIcon,
   },
   {
-    name: 'SSL certificates',
+    name: 'IoT & ML',
     description:
-      'Sit quis amet rutrum tellus ullamcorper ultricies libero dolor eget. Sem sodales gravida quam turpis enim lacus amet.',
+      'Micropython Python ESP32 Adafruit MLX90640 CNN-LSTM Algorithm / Data augmentation',
     icon: LockClosedIcon,
   },
   {
-    name: 'Simple queues',
+    name: 'Data Analysis',
     description:
-      'Quisque est vel vulputate cursus. Risus proin diam nunc commodo. Lobortis auctor congue commodo diam neque.',
+      'Power BI / Kibana  SQL, NoSQL, MongoDB, SQL server, MySQL, Oracle',
     icon: ArrowPathIcon,
   },
   {
-    name: 'Advanced security',
+    name: 'UX/UI Design',
     description:
-      'Arcu egestas dolor vel iaculis in ipsum mauris. Tincidunt mattis aliquet hac quis. Id hac maecenas ac donec pharetra eget.',
+      'Figma Canva ',
     icon: FingerPrintIcon,
   },
+]
+
+const navigation = [
+  { name: 'Profile', href: '#Profile', current: true },
+  { name: 'Interest', href: '#Interest', current: false },
+  { name: 'Projects', href: '#Projects', current: false },
+  { name: 'Hobby', href: '#Hobby', current: false },
 ]
 
 const posts = [
