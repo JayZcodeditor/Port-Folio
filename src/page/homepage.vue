@@ -220,12 +220,91 @@
     </div>
   </div> -->
 
-  <!-- <div class="bg-white py-24 sm:py-32">
+  <div class="bg-white py-24 sm:py-32">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="mx-auto max-w-2xl lg:mx-0">
-        <h2 class="text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl text-left">From the blog</h2>
-        <p class="mt-2 text-lg leading-8 text-gray-600 text-left">Learn how to grow your business with our expert advice.</p>
-      </div>
+      <div class="grid grid-cols-2 items-center mx-auto lg:mx-0">
+  <!-- คอลัมน์ซ้าย -->
+  <div>
+    <h2 class="text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl text-left">From the blog</h2>
+    <p class="mt-2 text-lg leading-8 text-gray-600 text-left">
+      Learn how to grow your business with our expert advice.
+    </p>
+  </div>
+
+  <!-- คอลัมน์ขวา -->
+  <div class="text-right">
+    <button @click="openModal" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      Comment
+    </button>
+  </div>
+</div>
+
+ <!-- Modal -->
+ <div v-if="isModalOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50">
+    <div class="bg-white p-5 rounded-lg shadow-lg w-1/2">
+      <h2 class="text-xl font-semibold mb-4">Add your comment</h2>
+      
+<!-- Form -->
+<form @submit.prevent="submitComment">
+  <!-- Title -->
+  <div class="mb-4">
+    <label for="title" class="block text-gray-700">Title:</label>
+    <input 
+      id="title" 
+      v-model="title" 
+      type="text" 
+      class="mt-1 block w-full p-2 border rounded" 
+      required 
+    />
+  </div>
+
+  <!-- Comment -->
+  <div class="mb-4">
+    <label for="comment" class="block text-gray-700">Comment:</label>
+    <textarea 
+      id="comment" 
+      v-model="comment" 
+      class="mt-1 block w-full p-2 border rounded" 
+      rows="4" 
+      required>
+    </textarea>
+  </div>
+
+  <!-- Name -->
+  <div class="mb-4">
+    <label for="name" class="block text-gray-700">Name:</label>
+    <input 
+      id="name" 
+      v-model="name" 
+      type="text" 
+      class="mt-1 block w-full p-2 border rounded" 
+      required 
+    />
+  </div>
+
+  <!-- Gmail -->
+  <div class="mb-4">
+    <label for="gmail" class="block text-gray-700">Gmail:</label>
+    <input 
+      id="gmail" 
+      v-model="gmail" 
+      type="email" 
+      class="mt-1 block w-full p-2 border rounded" 
+      required 
+    />
+  </div>
+
+  <!-- Buttons -->
+  <div class="flex justify-end">
+    <button @click="closeModal" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded mr-2">Close</button>
+    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+  </div>
+</form>
+
+
+    </div>
+  </div>
+
       <div class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
         <article v-for="post in posts" :key="post.id" class="flex max-w-xl flex-col items-start justify-between">
           <div class="flex items-center gap-x-4 text-xs">
@@ -239,24 +318,12 @@
                 {{ post.title }}
               </a>
             </h3>
-            <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{{ post.description }}</p>
-          </div>
-          <div class="relative mt-8 flex items-center gap-x-4">
-            <img :src="post.author.imageUrl" alt="" class="h-10 w-10 rounded-full bg-gray-50" />
-            <div class="text-sm leading-6">
-              <p class="font-semibold text-gray-900">
-                <a :href="post.author.href">
-                  <span class="absolute inset-0" />
-                  {{ post.author.name }}
-                </a>
-              </p>
-              <p class="text-gray-600">{{ post.author.role }}</p>
-            </div>
+            <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600 text-left">{{ post.description }}</p>
           </div>
         </article>
       </div>
     </div>
-  </div> -->
+  </div>
 
   <!-- งานที่หา -->
   <div id="Applicant" class="pt-40">
@@ -309,12 +376,78 @@
     </div>
   </div>
 
+
+
   <Footer />
 
 
 </template>
 
 <script setup>
+import axios from 'axios'; // นำเข้า axios
+// สร้าง state สำหรับการควบคุม modal เปิด/ปิด
+const isModalOpen = ref(false)
+
+// สร้างตัวแปรเก็บข้อมูลจากฟอร์ม
+const title = ref('')
+const comment = ref('')
+const name = ref('')
+const gmail = ref('')
+
+// ฟังก์ชันเปิด modal
+const openModal = () => {
+  isModalOpen.value = true
+}
+
+// ฟังก์ชันปิด modal
+const closeModal = () => {
+  isModalOpen.value = false
+}
+
+// ข้อความแสดงผลลัพธ์จากการเชื่อมต่อ
+const message = ref('');
+const error = ref('');
+
+const submitComment = async () => {
+  try {
+    // ส่งข้อมูลไปยัง backend โดยใช้ fetch
+    const response = await fetch('http://localhost:4000/api/submit-form', {
+      method: 'POST', // กำหนดให้ใช้ method POST
+      headers: {
+        'Content-Type': 'application/json', // กำหนด header ให้เป็น JSON
+      },
+      body: JSON.stringify({
+        title: title.value,
+        name: name.value,
+        gmail: gmail.value,
+        comment: comment.value,
+      }), // เปลี่ยนข้อมูลในฟอร์มเป็น JSON ก่อนส่งไปยัง backend
+    });
+
+    // ตรวจสอบการตอบกลับจาก backend
+    if (response.ok) {
+      const responseData = await response.json(); // แปลงการตอบกลับเป็น JSON
+      message.value = 'Data saved successfully!'; // ข้อความแสดงว่าการบันทึกสำเร็จ
+      error.value = ''; // ล้างข้อความแสดงข้อผิดพลาด
+    } else {
+      throw new Error('Unexpected response from the server');
+    }
+
+    // เคลียร์ข้อมูลในฟอร์ม
+    title.value = '';
+    name.value = '';
+    gmail.value = '';
+    comment.value = '';
+  } catch (err) {
+    // จับข้อผิดพลาดหากการเชื่อมต่อล้มเหลว
+    console.error('Error submitting comment:', err);
+    error.value = `Error: ${err.message}`;
+    message.value = ''; // ล้างข้อความแสดงผลสำเร็จ
+  }
+};
+
+
+
 
 const downloadFile = () => {
   const fileUrl = pdf; // Path relative to the public folder

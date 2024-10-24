@@ -1,23 +1,17 @@
 {
   "compilerOptions": {
-    "composite": true, // เพิ่มบรรทัดนี้
-    "target": "ES2022",
-    "lib": ["ES2023"],
-    "module": "ESNext",
+    "module": "ESNext",         // ใช้โมดูลแบบ ES Modules
+    "target": "ES2020",         // ตั้งค่าเป้าหมายการคอมไพล์เป็นเวอร์ชัน ES ที่รองรับ
+    "moduleResolution": "node", // ใช้การแก้ไขโมดูลแบบ Node.js
+    "esModuleInterop": true,    // เพิ่มการรองรับการนำเข้าแบบ CommonJS/ES Modules
     "skipLibCheck": true,
-
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": false,
-    "isolatedModules": true,
-    "moduleDetection": "force",
-    "noEmit": false,
-
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "strict": true,             // เปิดใช้งาน TypeScript strict mode
+    "forceConsistentCasingInFileNames": true, // ป้องกันการใช้ชื่อไฟล์ที่ผิดพลาด
+    "outDir": "./dist",         // โฟลเดอร์สำหรับไฟล์ที่ถูกคอมไพล์
+    "rootDir": "./src",         // โฟลเดอร์ของไฟล์ต้นฉบับ TypeScript
+    "resolveJsonModule": true,  // เพิ่มการรองรับการนำเข้าไฟล์ JSON
+    "sourceMap": true           // เปิดใช้งาน source maps สำหรับการดีบัก
   },
-  "include": ["vite.config.ts"]
+  "include": ["src/**/*"],      // รวมไฟล์ TypeScript ในโฟลเดอร์ src ทั้งหมด
+  "exclude": ["node_modules", "dist"]  // ยกเว้นโฟลเดอร์ที่ไม่ต้องการคอมไพล์
 }

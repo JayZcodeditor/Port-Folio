@@ -1,27 +1,49 @@
 {
-  "name": "port-folio",
+  "name": "combined-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "private": true,
-  "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
+  "engines": {
+    "node": "14.17.6"
+  },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "@headlessui/vue": "^1.7.23",
     "@heroicons/vue": "^2.1.5",
+    "@types/express": "^5.0.0",
+    "axios": "^1.7.7",
+    "bcrypt": "^5.0.1",
+    "connect-flash": "^0.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.6",
+    "express": "^4.21.1",
+    "express-fileupload": "^1.2.1",
+    "express-session": "^1.17.2",
     "flowbite": "^2.5.2",
     "heroicons": "^2.1.5",
+    "mongoose": "^6.0.12",
+    "mongoose-unique-validator": "^3.1.0",
+    "ts-node-dev": "^2.0.0",
     "vue": "^3.5.10",
     "vue-router": "^4.4.5"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.1.4",
     "autoprefixer": "^10.4.20",
+    "nodemon": "^3.1.7",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.14",
-    "typescript": "^5.5.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3",
     "vite": "^5.4.8",
     "vue-tsc": "^2.1.6"
   }
