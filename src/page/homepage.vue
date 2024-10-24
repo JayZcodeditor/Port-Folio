@@ -97,8 +97,8 @@
   </div>
 
 
-
-  <div class="bg-white">
+<!-- เกี่ยวกับฉัน -->
+  <div class="bg-white" id="About">
     <div class="pt-6 grid grid-cols-1 lg:grid-cols-2 mt-40">      
       <!-- Image gallery -->
       <div class="mx-[15%] mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2  lg:gap-x-8 lg:px-8">
@@ -145,8 +145,10 @@
       </div>
     </div>
   </div>
-  
-  <div class="bg-white">
+
+
+  <!-- งานที่ผ่านมา -->
+  <div class="bg-white mt-10" id="Work">
     <div class="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
       <div>
         <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl kanit-semibold">Past work</h2>
@@ -180,10 +182,11 @@
     </div>
   </div>
 
-  <div class="bg-white py-24 sm:py-32 -mt-36">
+<!-- เครื่องมือที่เกี่ยวข้อง -->
+  <div class="bg-white py-24 sm:py-32 -pt-40" id="Framework">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <h2 class="text-center text-lg font-semibold leading-8 text-gray-900">Trusted by the world’s most innovative teams</h2>
-      <div class="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-6">
+      <h2 class="text-center text-2xl font-bold leading-8 text-gray-900">Related tools and frameworks</h2>
+      <div class="mx-auto mt-20 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-6">
         <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" :src="l1" alt="Transistor" width="158" height="158" />
         <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" :src="l2" alt="Reform" width="158" height="158" />
         <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" :src="l3" alt="Tuple" width="158" height="158" />
@@ -255,16 +258,17 @@
     </div>
   </div> -->
 
-  <div>
+  <!-- งานที่หา -->
+  <div id="Applicant" class="pt-40">
     <div class=" sm:px-0">
-      <h3 class="text-base font-semibold leading-7 text-gray-900">Applicant Information</h3>
+      <h3 class="text-2xl font-bold leading-7 text-gray-900">Applicant Information</h3>
       <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Personal details and application.</p>
     </div>
     <div class="mt-6 border-t border-gray-100">
       <dl class="divide-y divide-gray-100">
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <dt class="text-sm font-medium leading-6 text-gray-900">Full name</dt>
-          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Thammakit Chotchuang</dd>
+          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Mr. Thammakit Chotchuang</dd>
         </div>
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <dt class="text-sm font-medium leading-6 text-gray-900">Application for</dt>
@@ -280,7 +284,7 @@
         </div>
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <dt class="text-sm font-medium leading-6 text-gray-900">About</dt>
-          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.</dd>
+          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">I am interested in work related to frontend and backend, and in the visualization and backend work that involves complex methods.</dd>
         </div>
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <dt class="text-sm font-medium leading-6 text-gray-900">Attachments</dt>
@@ -418,10 +422,10 @@ const features = [
 ]
 
 const navigation = [
-  { name: 'Profile', href: '#Profile', current: true },
-  { name: 'Interest', href: '#Interest', current: false },
-  { name: 'Projects', href: '#Projects', current: false },
-  { name: 'Hobby', href: '#Hobby', current: false },
+  { name: 'About', href: '#About', current: true },
+  { name: 'Work', href: '#Work', current: false },
+  { name: 'Framework', href: '#Framework', current: false },
+  { name: 'Applicant', href: '#Applicant', current: false },
 ]
 
 const posts = [
@@ -511,5 +515,9 @@ const posts = [
 .item-bl:hover,
 .item-br:hover {
   transform: scale(2.2); /* ขยายขนาด 2.2 เท่า */
+}
+
+html {
+  scroll-behavior: smooth;
 }
 </style>

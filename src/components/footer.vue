@@ -2,7 +2,7 @@
  
 
 
- <footer class="bg-white dark:bg-gray-900 mt-20">
+ <footer class="bg-white dark:bg-gray-900 pt-40">
     <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div class="md:flex md:justify-between">
           <div class="mb-6 md:mb-0">
@@ -13,13 +13,13 @@
           </div>
           <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
               <div>
-                  <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources</h2>
+                  <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">&nbsp;</h2>
                   <ul class="text-gray-500 dark:text-gray-400 font-medium">
                       <li class="mb-4">
-                          <a href="https://flowbite.com/" class="hover:underline">Flowbite</a>
+                          <a href="https://flowbite.com/" class="hover:underline">Youtube</a>
                       </li>
                       <li>
-                          <a href="https://tailwindcss.com/" class="hover:underline">Tailwind CSS</a>
+                          <a href="https://tailwindcss.com/" class="hover:underline">Facebook</a>
                       </li>
                   </ul>
               </div>
@@ -35,13 +35,13 @@
                   </ul>
               </div>
               <div>
-                  <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
+                  <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">&nbsp;</h2>
                   <ul class="text-gray-500 dark:text-gray-400 font-medium">
                       <li class="mb-4">
-                          <a href="#" class="hover:underline">Privacy Policy</a>
+                          <a href="#" class="hover:underline">Instagram</a>
                       </li>
                       <li>
-                          <a href="#" class="hover:underline">Terms &amp; Conditions</a>
+                          <a href="#" class="hover:underline">Gmail</a>
                       </li>
                   </ul>
               </div>
