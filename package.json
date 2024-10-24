@@ -32,6 +32,7 @@
     "heroicons": "^2.1.5",
     "mongoose": "^6.0.12",
     "mongoose-unique-validator": "^3.1.0",
+    "sweetalert2": "^11.14.4",
     "ts-node-dev": "^2.0.0",
     "vue": "^3.5.10",
     "vue-router": "^4.4.5"

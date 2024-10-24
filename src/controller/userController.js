@@ -32,3 +32,18 @@ export const comment = async (req, res) => {
     res.status(500).json({ message: 'Error saving data', error: error.message });
   }
 };
+
+// ฟังก์ชันสำหรับดึงข้อมูลผู้ใช้ทั้งหมดจาก MongoDB
+export const getcomment = async (req, res) => {
+  try {
+    // ดึงข้อมูลผู้ใช้ทั้งหมดจาก MongoDB
+    const users = await User.find();
+    
+    // ส่งข้อมูลกลับไปยัง client
+    res.status(200).json({ data: users });
+  } catch (error) {
+    // จัดการข้อผิดพลาดหากไม่สามารถดึงข้อมูลได้
+    console.error('Error fetching data:', error);
+    res.status(500).json({ message: 'Error fetching data', error: error.message });
+  }
+};

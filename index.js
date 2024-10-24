@@ -7,7 +7,8 @@ import cors from 'cors'; // นำเข้า CORS
 import ejs from 'ejs';
 
 // controller
-import { comment } from './src/controller/userController.js'; // นำเข้าฟังก์ชัน createUser จาก userController
+import userRoutes from './src/routes/userRoutes.js'; // นำเข้า route
+
 
 // MongoDB connection
 mongoose.connect('mongodb+srv://jay:1234@cluster0.88ruy.mongodb.net/Test_data', { useNewUrlParser: true })
@@ -41,11 +42,9 @@ app.use("*", (req, res, next) => {
     loggedIn = req.session.userId;
     next();
 })
-
   
-// Route สำหรับ submit ฟอร์ม
-app.post('/api/submit-form', comment); // เรียกฟังก์ชัน createUser เมื่อ POST มาที่ /api/submit-form
-
+// ใช้เส้นทางสำหรับบันทึกและดึงคอมเมนต์
+app.use('/api', userRoutes);
 
 // Start server
 let port = process.env.PORT;
