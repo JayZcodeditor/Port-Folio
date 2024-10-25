@@ -420,7 +420,7 @@ const error = ref('');
 const submitComment = async () => {
   try {
     // ส่งข้อมูลไปยัง backend โดยใช้ fetch
-    const response = await fetch(`${apiUrl}api/submit-form`, {
+    const response = await fetch(`${apiUrl}/api/submit-form`, {
       method: 'POST', // กำหนดให้ใช้ method POST
       headers: {
         'Content-Type': 'application/json', // กำหนด header ให้เป็น JSON
@@ -468,7 +468,7 @@ const submitComment = async () => {
 // ฟังก์ชันดึงข้อมูลจาก MongoDB
 const fetchComments = async () => {
   try {
-    const response = await fetch(`${apiUrl}api/comments`);
+    const response = await fetch(`${apiUrl}/api/comments`);
     if (response.ok) {
       const data = await response.json();
       posts.value = data.data; // เก็บข้อมูลที่ดึงมาในตัวแปร 'comments'
