@@ -12,11 +12,6 @@ const routes = [
         component: Homepage
     },
     {
-        path: '/about',
-        name: 'About',
-        component: AboutPage
-    },
-    {
         path: '/webapp',
         name: 'webapp',
         component: Webapp
