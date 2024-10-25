@@ -3,14 +3,14 @@ import mongoose from 'mongoose';
 import expressSession from 'express-session';
 import flash from 'connect-flash';
 import fileUpload from 'express-fileupload';
-import cors from 'cors'; // นำเข้า CORS
+import cors from 'cors';
 import ejs from 'ejs';
 
 // controller
-import userRoutes from './src/routes/userRoutes.js'; // นำเข้า route
+import userRoutes from './src/routes/userRoutes.js';
 
 // MongoDB connection
-mongoose.connect('mongodb+srv://jay:1234@cluster0.88ruy.mongodb.net/Test_data', { useNewUrlParser: true })
+mongoose.connect('mongodb+srv://jay:1234@cluster0.88ruy.mongodb.net/Test_data', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
@@ -23,39 +23,30 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());
 
-// เพิ่มการใช้งาน CORS
+// CORS middleware configuration
 app.use(cors({
-  origin: ['https://port-folio-jayz.vercel.app', 'https://port-folio-jayz-r4a4du4vf-jthammakit2546gmailcoms-projects.vercel.app'], // อนุญาตจากทั้งสองโดเมน
-  credentials: true, // อนุญาตการส่งคุกกี้ข้ามโดเมน
-  methods: ['GET', 'POST', 'OPTIONS'], // อนุญาตเมธอดที่ใช้
+  origin: '*'
 }));
 
-// จัดการกับคำร้อง preflight
-app.options('*', cors()); // จัดการคำร้อง OPTIONS สำหรับ preflight
-
 app.use(expressSession({
-    secret: 'nodejsblog',
-    resave: true,
-    saveUninitialized: true
+  secret: 'nodejsblog',
+  resave: true,
+  saveUninitialized: true
 }));
 app.use(flash());
 
 global.loggedIn = null;
 
 app.use("*", (req, res, next) => {
-    loggedIn = req.session.userId;
-    next();
+  loggedIn = req.session.userId;
+  next();
 });
-  
-// ใช้เส้นทางสำหรับบันทึกและดึงคอมเมนต์
+
+// Routes
 app.use('/api', userRoutes);
 
 // Start server
-let port = process.env.PORT;
-if (port == null || port === "") {
-    port = 4000;
-}
-
+const port = process.env.PORT || 4000;
 app.listen(port, () => {
-    console.log(`App listening on port ${port}`);
+  console.log(`App listening on port ${port}`);
 });
