@@ -26,7 +26,7 @@ app.use(fileUpload());
 
 // เพิ่มการใช้งาน CORS
 app.use(cors({
-  origin: 'http://localhost:5173', // อนุญาตให้เชื่อมต่อจาก frontend ที่รันอยู่ที่พอร์ต 5173
+  origin: 'https://port-folio-jayz.vercel.app/', // อนุญาตให้เชื่อมต่อจาก frontend ที่รันอยู่ที่พอร์ต 5173
 }));
 
 app.use(expressSession({

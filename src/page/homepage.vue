@@ -420,7 +420,7 @@ const error = ref('');
 const submitComment = async () => {
   try {
     // ส่งข้อมูลไปยัง backend โดยใช้ fetch
-    const response = await fetch('http://localhost:4000/api/submit-form', {
+    const response = await fetch(`${apiUrl}/api/submit-form`, {
       method: 'POST', // กำหนดให้ใช้ method POST
       headers: {
         'Content-Type': 'application/json', // กำหนด header ให้เป็น JSON
@@ -465,6 +465,25 @@ const submitComment = async () => {
   }
 };
 
+// ฟังก์ชันดึงข้อมูลจาก MongoDB
+const fetchComments = async () => {
+  try {
+    const response = await fetch(`${apiUrl}/api/comments`);
+    if (response.ok) {
+      const data = await response.json();
+      posts.value = data.data; // เก็บข้อมูลที่ดึงมาในตัวแปร 'comments'
+    } else {
+      console.error('Error fetching comments:', response.statusText);
+    }
+  } catch (error) {
+    console.error('Error fetching comments:', error);
+  }
+};
+
+// เรียกฟังก์ชัน fetchComments เมื่อ component ถูก mount
+onMounted(() => {
+  fetchComments();
+});
 
 
 
@@ -478,7 +497,7 @@ const downloadFile = () => {
   document.body.removeChild(link); // Clean up
 };
 
-
+import { apiUrl } from '../service/apisetting';
 import { Dialog, DialogPanel } from '@headlessui/vue'
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
 import { PaperClipIcon } from '@heroicons/vue/20/solid'
@@ -573,25 +592,7 @@ const features = [
 ]
 import { ref, onMounted } from 'vue';
 
-// ฟังก์ชันดึงข้อมูลจาก MongoDB
-const fetchComments = async () => {
-  try {
-    const response = await fetch('http://localhost:4000/api/comments');
-    if (response.ok) {
-      const data = await response.json();
-      posts.value = data.data; // เก็บข้อมูลที่ดึงมาในตัวแปร 'comments'
-    } else {
-      console.error('Error fetching comments:', response.statusText);
-    }
-  } catch (error) {
-    console.error('Error fetching comments:', error);
-  }
-};
 
-// เรียกฟังก์ชัน fetchComments เมื่อ component ถูก mount
-onMounted(() => {
-  fetchComments();
-});
 
 const navigation = [
   { name: 'About', href: '#About', current: true },
