@@ -483,7 +483,6 @@ import { Dialog, DialogPanel } from '@headlessui/vue'
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
 import { PaperClipIcon } from '@heroicons/vue/20/solid'
 import Swal from 'sweetalert2';
-import Navbar from '../components/Navbar.vue'
 import Footer from '../components/footer.vue'
 
 const mobileMenuOpen = ref(false)
