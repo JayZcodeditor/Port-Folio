@@ -9,7 +9,6 @@ import ejs from 'ejs';
 // controller
 import userRoutes from './src/routes/userRoutes.js'; // นำเข้า route
 
-
 // MongoDB connection
 mongoose.connect('mongodb+srv://jay:1234@cluster0.88ruy.mongodb.net/Test_data', { useNewUrlParser: true })
   .then(() => console.log('MongoDB Connected'))
@@ -25,28 +24,28 @@ app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());
 
 // เพิ่มการใช้งาน CORS
-// app.use(cors({
-//   origin: 'http://localhost:5173', // อนุญาตให้เชื่อมต่อจาก frontend ที่รันอยู่ที่พอร์ต 5173
-// }));
+app.use(cors({
+  origin: ['https://port-folio-jayz.vercel.app', 'https://port-folio-jayz-r4a4du4vf-jthammakit2546gmailcoms-projects.vercel.app'], // อนุญาตจากทั้งสองโดเมน
+  credentials: true, // อนุญาตการส่งคุกกี้ข้ามโดเมน
+  methods: ['GET', 'POST', 'OPTIONS'], // อนุญาตเมธอดที่ใช้
+}));
 
-// ใช้ cors middleware และกำหนดให้อนุญาตจากทุก origin
-// app.use(cors({
-//   origin: '*',  // หรือระบุ origin ที่คุณต้องการอนุญาต
-// }));
+// จัดการกับคำร้อง preflight
+app.options('*', cors()); // จัดการคำร้อง OPTIONS สำหรับ preflight
 
 app.use(expressSession({
     secret: 'nodejsblog',
     resave: true,
     saveUninitialized: true
 }));
-app.use(flash());  
+app.use(flash());
 
 global.loggedIn = null;
 
 app.use("*", (req, res, next) => {
     loggedIn = req.session.userId;
     next();
-})
+});
   
 // ใช้เส้นทางสำหรับบันทึกและดึงคอมเมนต์
 app.use('/api', userRoutes);
