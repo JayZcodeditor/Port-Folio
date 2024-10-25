@@ -468,7 +468,7 @@ const submitComment = async () => {
 // ฟังก์ชันดึงข้อมูลจาก MongoDB
 const fetchComments = async () => {
   try {
-    const response = await fetch(`${apiUrl}api/comments`);
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/comments`);
     if (response.ok) {
       const data = await response.json();
       posts.value = data.data; // เก็บข้อมูลที่ดึงมาในตัวแปร 'comments'

@@ -29,11 +29,17 @@ app.use(fileUpload());
 //   origin: 'http://localhost:5173', // อนุญาตให้เชื่อมต่อจาก frontend ที่รันอยู่ที่พอร์ต 5173
 // }));
 
-// เพิ่มการใช้งาน CORS
+const allowedOrigins = ['https://port-folio-jayz.vercel.app', 'https://port-folio-jayz-50nna9f0w-jthammakit2546gmailcoms-projects.vercel.app'];
+
 app.use(cors({
-  origin: ['https://port-folio-jayz.vercel.app', 'https://port-folio-jayz-r4a4du4vf-jthammakit2546gmailcoms-projects.vercel.app'], // อนุญาตจากทั้งสองโดเมน
-  credentials: true, // อนุญาตการส่งคุกกี้ข้ามโดเมน
-  methods: ['GET', 'POST', 'OPTIONS'], // อนุญาตเมธอดที่ใช้
+  origin: function (origin, callback) {
+    // อนุญาตให้ requests ที่ไม่มี origin (เช่นจาก Postman) 
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, origin);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
 }));
 
 app.use(expressSession({
