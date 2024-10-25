@@ -30,9 +30,9 @@ app.use(fileUpload());
 // }));
 
 // ใช้ cors middleware และกำหนดให้อนุญาตจากทุก origin
-app.use(cors({
-  origin: '*',  // หรือระบุ origin ที่คุณต้องการอนุญาต
-}));
+// app.use(cors({
+//   origin: '*',  // หรือระบุ origin ที่คุณต้องการอนุญาต
+// }));
 
 app.use(expressSession({
     secret: 'nodejsblog',

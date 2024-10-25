@@ -32,12 +32,11 @@ export const comment = async (req, res) => {
     res.status(500).json({ message: 'Error saving data', error: error.message });
   }
 };
-
 // ฟังก์ชันสำหรับดึงข้อมูลผู้ใช้ทั้งหมดจาก MongoDB
 export const getcomment = async (req, res) => {
   try {
-    // ดึงข้อมูลผู้ใช้ทั้งหมดจาก MongoDB
-    const users = await User.find();
+    // ดึงข้อมูลจาก MongoDB และเรียงตาม _id ให้ข้อมูลล่าสุดมาเป็นอันดับแรก
+    const users = await User.find().sort({ _id: -1 });  // -1 หมายถึงการเรียงลำดับจากมากไปน้อย (ล่าสุด -> เก่าสุด)
     
     // ส่งข้อมูลกลับไปยัง client
     res.status(200).json({ data: users });
