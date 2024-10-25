@@ -5,7 +5,6 @@ import flash from 'connect-flash';
 import fileUpload from 'express-fileupload';
 import cors from 'cors';
 import ejs from 'ejs';
-import app from '../src/App.vue'
 
 // controller
 import userRoutes from '../src/routes/userRoutes.js';
@@ -16,6 +15,7 @@ mongoose.connect('mongodb+srv://jay:1234@cluster0.88ruy.mongodb.net/Test_data', 
   .catch(err => console.error('MongoDB connection error:', err));
 
 const app = express();
+
 app.set('view engine', 'ejs');
 
 // Middleware settings
