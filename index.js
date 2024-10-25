@@ -25,6 +25,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());
 
 // เพิ่มการใช้งาน CORS
+// app.use(cors({
+//   origin: 'http://localhost:5173', // อนุญาตให้เชื่อมต่อจาก frontend ที่รันอยู่ที่พอร์ต 5173
+// }));
+
+// เพิ่มการใช้งาน CORS
 app.use(cors({
   origin: ['https://port-folio-jayz.vercel.app', 'https://port-folio-jayz-r4a4du4vf-jthammakit2546gmailcoms-projects.vercel.app'], // อนุญาตจากทั้งสองโดเมน
   credentials: true, // อนุญาตการส่งคุกกี้ข้ามโดเมน
