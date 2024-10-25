@@ -425,6 +425,7 @@ const submitComment = async () => {
       headers: {
         'Content-Type': 'application/json', // กำหนด header ให้เป็น JSON
       },
+      redirect: 'follow',
       body: JSON.stringify({
         title: title.value,
         name: name.value,
@@ -468,7 +469,7 @@ const submitComment = async () => {
 // ฟังก์ชันดึงข้อมูลจาก MongoDB
 const fetchComments = async () => {
   try {
-    const response = await fetch(`${apiUrl}/api/comments`);
+    const response = await fetch(`${apiUrl}/api/comments`, {redirect: 'follow'});
     if (response.ok) {
       const data = await response.json();
       posts.value = data.data; // เก็บข้อมูลที่ดึงมาในตัวแปร 'comments'
