@@ -15,6 +15,6 @@
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src/**/*"],      // รวมไฟล์ TypeScript ในโฟลเดอร์ src ทั้งหมด
+  "include": ["src/**/*", "./api/*.js"],      // รวมไฟล์ TypeScript ในโฟลเดอร์ src ทั้งหมด
   "exclude": ["node_modules", "dist"]  // ยกเว้นโฟลเดอร์ที่ไม่ต้องการคอมไพล์
 }

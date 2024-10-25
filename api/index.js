@@ -5,9 +5,10 @@ import flash from 'connect-flash';
 import fileUpload from 'express-fileupload';
 import cors from 'cors';
 import ejs from 'ejs';
+import app from '../src/App.vue'
 
 // controller
-import userRoutes from './src/routes/userRoutes.js';
+import userRoutes from '../src/routes/userRoutes.js';
 
 // MongoDB connection
 mongoose.connect('mongodb+srv://jay:1234@cluster0.88ruy.mongodb.net/Test_data', { useNewUrlParser: true, useUnifiedTopology: true })
@@ -51,3 +52,6 @@ const port = process.env.PORT || 4000;
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
 });
+
+
+export default app;

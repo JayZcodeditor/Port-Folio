@@ -9,7 +9,8 @@
     "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite", 
-    "build": "vite build" 
+    "build": "vite build",
+    "vercel-build": "echo hello"
   },
   "keywords": [],
   "engines": {
