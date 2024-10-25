@@ -10,7 +10,10 @@
     "outDir": "./dist",         // โฟลเดอร์สำหรับไฟล์ที่ถูกคอมไพล์
     "rootDir": "./src",         // โฟลเดอร์ของไฟล์ต้นฉบับ TypeScript
     "resolveJsonModule": true,  // เพิ่มการรองรับการนำเข้าไฟล์ JSON
-    "sourceMap": true           // เปิดใช้งาน source maps สำหรับการดีบัก
+    "sourceMap": true,           // เปิดใช้งาน source maps สำหรับการดีบัก
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": true
   },
   "include": ["src/**/*"],      // รวมไฟล์ TypeScript ในโฟลเดอร์ src ทั้งหมด
   "exclude": ["node_modules", "dist"]  // ยกเว้นโฟลเดอร์ที่ไม่ต้องการคอมไพล์
