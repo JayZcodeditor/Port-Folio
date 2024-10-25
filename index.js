@@ -29,17 +29,9 @@ app.use(fileUpload());
 //   origin: 'http://localhost:5173', // อนุญาตให้เชื่อมต่อจาก frontend ที่รันอยู่ที่พอร์ต 5173
 // }));
 
-const allowedOrigins = ['https://port-folio-jayz.vercel.app', 'https://port-folio-jayz-50nna9f0w-jthammakit2546gmailcoms-projects.vercel.app'];
-
+// ใช้ cors middleware และกำหนดให้อนุญาตจากทุก origin
 app.use(cors({
-  origin: function (origin, callback) {
-    // อนุญาตให้ requests ที่ไม่มี origin (เช่นจาก Postman) 
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, origin);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  }
+  origin: '*',  // หรือระบุ origin ที่คุณต้องการอนุญาต
 }));
 
 app.use(expressSession({
@@ -47,7 +39,7 @@ app.use(expressSession({
     resave: true,
     saveUninitialized: true
 }));
-app.use(flash());
+app.use(flash());  
 
 global.loggedIn = null;
 
