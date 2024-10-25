@@ -25,7 +25,8 @@ app.use(fileUpload());
 
 // CORS middleware configuration
 app.use(cors({
-  origin: '*'
+  origin: '*',
+  methods: ['GET', 'POST']
 }));
 
 app.use(expressSession({
