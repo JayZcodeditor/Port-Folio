@@ -1,5 +1,3 @@
-# Create the translated content as a text file and save it
-translated_content = """
 ## 🌟 โปรเจกต์ Vue 3 + Vite + Tailwind + Vercel + Express + JavaScript + MongoDB
 
 โปรเจกต์นี้ถูกสร้างขึ้นเพื่อทำความเข้าใจการใช้ **Vue 3** ร่วมกับ **MongoDB** รวมถึงการ Deploy บนบริการโฮสต์อย่าง **Vercel** โดยโปรเจกต์นี้สามารถเชื่อมต่อกับ MongoDB ได้สำเร็จและให้ประสบการณ์ที่ราบรื่นจากการพัฒนาไปจนถึงการใช้งานจริง
@@ -79,3 +77,23 @@ translated_content = """
     "dev": "vite",
     "build": "vite build"
   }
+
+# Languages and Tools: 🛠
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="30" width="42"
+    alt="javascript logo" />
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height="30" width="42"
+    alt="html5 logo" />
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" height="30" width="42"
+    alt="css3 logo" />
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" height="30" width="42"
+    alt="nodejs logo" />
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" height="30" width="42"
+    alt="bootstrap logo" />
+<img src="https://openai.com/content/images/2022/05/openai-avatar.png" height="30" width="30"
+    alt="git logo" />
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" height="30" width="42"
+    alt="vscode logo" />
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" height="30" width="42"
+    alt="git logo" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/640px-Google_%22G%22_Logo.svg.png" height="30" width="30"
+    alt="ChatGPT logo" />
