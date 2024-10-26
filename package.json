@@ -2,11 +2,11 @@
   "name": "combined-project",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "/api/index.js",
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "nodemon api/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite", 
     "build": "vite build"

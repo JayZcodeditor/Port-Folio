@@ -1,6 +1,5 @@
-
 <template>
-  <div class="bg-white">
+  <div class="bg-white w-full">
     <header class="absolute inset-x-0 top-0 z-50">
       <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div class="flex lg:flex-1">
@@ -16,22 +15,22 @@
           </button>
         </div>
         <div class="hidden lg:flex lg:gap-x-12">
-          <a v-for="item in navigation" :key="item.name" :href="item.href" class="text-sm font-semibold leading-6 text-gray-900">{{ item.name }}</a>
+          <a v-for="item in navigation" :key="item.name" href="#"
+            @click.prevent="scrollToSection(item.href)"
+            class="text-sm font-semibold leading-6 text-gray-900">{{ item.name }}</a>
         </div>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end">
           <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Contact <span aria-hidden="true">&rarr;</span></a>
         </div>
-      </nav>      
-      
+      </nav>
+
       <Dialog class="lg:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
         <div class="fixed inset-0 z-50" />
-        <DialogPanel
-          class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <DialogPanel class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div class="flex items-center justify-between">
             <a href="#" class="-m-1.5 p-1.5">
               <span class="sr-only">Your Company</span>
-              <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
-                alt="" />
+              <img class="h-8 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="" />
             </a>
             <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700" @click="mobileMenuOpen = false">
               <span class="sr-only">Close menu</span>
@@ -41,14 +40,17 @@
           <div class="mt-6 flow-root">
             <div class="-my-6 divide-y divide-gray-500/10">
               <div class="space-y-2 py-6">
-                <a v-for="item in navigation" :key="item.name" :href="item.href"
-                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">{{
-                  item.name }}</a>
+                <a v-for="item in navigation" :key="item.name" href="#"
+                  @click.prevent="scrollToSection(item.href)"
+                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                  {{ item.name }}
+                </a>
               </div>
               <div class="py-6">
                 <a href="#"
-                  class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log
-                  in</a>
+                  class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                  Log in
+                </a>
               </div>
             </div>
           </div>
@@ -56,12 +58,13 @@
       </Dialog>
     </header>
 
-    
+    <div class="relative isolate px-6 pt-14 lg:px-8 max-w-full mx-auto">      <img :src="nb_1" alt="" class="absolute w-auto object-cover hidden md:block"
+        style="height: 42rem; z-index: -100; margin-left: -200px; margin-top: 7rem;">
+      <img :src="nb_2" alt="" class="absolute w-auto object-cover hidden 2xl:block"
+        style="height: 36rem; z-index: -100; margin-left: 1300px; margin-top: 13rem;">
+      <img :src="nb_3" alt="" class="absolute w-auto object-cover opacity-50 hidden xl:block"
+        style="height: 70rem; z-index: -100; margin-left: 350px; margin-top: -21rem;">
 
-    <div class="relative isolate px-6 pt-14 lg:px-8">
-      <img :src="nb_1" alt="" class="absolute w-auto  object-cover" style="height: 42rem; z-index: -100; margin-left: -200px; margin-top: 7rem;">
-      <img :src="nb_2" alt="" class="absolute w-auto  object-cover" style="height: 36rem; z-index: -100; margin-left: 1300px; margin-top: 13rem;">
-      <img :src="nb_3" alt="" class="absolute w-auto  object-cover opacity-50" style="height: 70rem; z-index: -100; margin-left: 350px; margin-top: -21rem;">
 
       <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
         aria-hidden="true">
@@ -97,26 +100,30 @@
   </div>
 
 
-<!-- เกี่ยวกับฉัน -->
+  <!-- เกี่ยวกับฉัน -->
   <div class="bg-white" id="About">
-    <div class="pt-6 grid grid-cols-1 lg:grid-cols-2 mt-40">      
+    <div class="pt-6 grid grid-cols-1 lg:grid-cols-2 mt-40">
       <!-- Image gallery -->
       <div class="mx-[15%] mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2  lg:gap-x-8 lg:px-8">
         <div class="aspect-h-3 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
-          <img :src="product.images[0].src" :alt="product.images[0].alt" class="h-full w-full object-cover object-center" />
+          <img :src="product.images[0].src" :alt="product.images[0].alt"
+            class="h-full w-full object-cover object-center" />
         </div>
         <div class="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
           <div class="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
-            <img :src="product.images[1].src" :alt="product.images[1].alt" class="h-full w-full object-cover object-center" />
+            <img :src="product.images[1].src" :alt="product.images[1].alt"
+              class="h-full w-full object-cover object-center" />
           </div>
           <div class="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
-            <img :src="product.images[2].src" :alt="product.images[2].alt" class="h-full w-full object-cover object-center" />
+            <img :src="product.images[2].src" :alt="product.images[2].alt"
+              class="h-full w-full object-cover object-center" />
           </div>
         </div>
       </div>
 
       <!-- Product info -->
-      <div class="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
+      <div
+        class="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
         <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8 mt-56">
           <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{{ product.name }}</h1>
         </div>
@@ -132,7 +139,7 @@
             </div>
           </div>
 
-        
+
 
           <div class="mt-10">
             <h2 class="text-sm font-medium text-gray-900">Hobby</h2>
@@ -149,7 +156,8 @@
 
   <!-- งานที่ผ่านมา -->
   <div class="bg-white mt-10" id="Work">
-    <div class="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
+    <div
+      class="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
       <div>
         <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl kanit-semibold">Past work</h2>
         <p class="mt-4 text-gray-500"></p>
@@ -162,37 +170,40 @@
         </dl>
       </div>
       <div class="grid grid-cols-2 grid-rows-2 gap-4 sm:gap-6 lg:gap-8">
-  <img :src="cp_1"
-       alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
-       class="item-tl rounded-lg bg-gray-100" />
-  
-  <img :src="fn_1"
-       alt="Top down view of walnut card tray with embedded magnets and card groove."
-       class="item-tr rounded-lg bg-gray-100" />
-  
-  <img :src="da_1"
-       alt="Side of walnut card tray with card groove and recessed card area."
-       class="item-bl rounded-lg bg-gray-100" />
-  
-  <img :src="ux_1"
-       alt="Walnut card tray filled with cards and card angled in dedicated groove."
-       class="item-br rounded-lg bg-gray-100" />
-</div>
+        <img :src="cp_1" alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
+          class="item-tl rounded-lg bg-gray-100" />
+
+        <img :src="fn_1" alt="Top down view of walnut card tray with embedded magnets and card groove."
+          class="item-tr rounded-lg bg-gray-100" />
+
+        <img :src="da_1" alt="Side of walnut card tray with card groove and recessed card area."
+          class="item-bl rounded-lg bg-gray-100" />
+
+        <img :src="ux_1" alt="Walnut card tray filled with cards and card angled in dedicated groove."
+          class="item-br rounded-lg bg-gray-100" />
+      </div>
 
     </div>
   </div>
 
-<!-- เครื่องมือที่เกี่ยวข้อง -->
+  <!-- เครื่องมือที่เกี่ยวข้อง -->
   <div class="bg-white py-24 sm:py-32 -pt-40" id="Framework">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <h2 class="text-center text-2xl font-bold leading-8 text-gray-900">Related tools and frameworks</h2>
-      <div class="mx-auto mt-20 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-6">
-        <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" :src="l1" alt="Transistor" width="158" height="158" />
-        <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" :src="l2" alt="Reform" width="158" height="158" />
-        <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" :src="l3" alt="Tuple" width="158" height="158" />
-        <img class="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1" :src="l4" alt="SavvyCal" width="158" height="158" />
-        <img class="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1" :src="l5" alt="Statamic" width="158" height="158" />
-        <img class="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1" :src="l6" alt="Statamic" width="158" height="158" />
+      <div
+        class="mx-auto mt-20 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-6">
+        <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" :src="l1" alt="Transistor" width="158"
+          height="158" />
+        <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" :src="l2" alt="Reform" width="158"
+          height="158" />
+        <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" :src="l3" alt="Tuple" width="158"
+          height="158" />
+        <img class="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1" :src="l4" alt="SavvyCal"
+          width="158" height="158" />
+        <img class="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1" :src="l5"
+          alt="Statamic" width="158" height="158" />
+        <img class="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1" :src="l6"
+          alt="Statamic" width="158" height="158" />
       </div>
     </div>
   </div>
@@ -223,107 +234,140 @@
   <div class="bg-white py-24 sm:py-32">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="grid grid-cols-2 items-center mx-auto lg:mx-0">
-  <!-- คอลัมน์ซ้าย -->
-  <div>
-    <h2 class="text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl text-left">From the blog</h2>
-    <p class="mt-2 text-lg leading-8 text-gray-600 text-left">
-      Learn how to grow your business with our expert advice.
-    </p>
-  </div>
+        <!-- คอลัมน์ซ้าย -->
+        <div>
+          <h2 class="text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl text-left">From the
+            blog</h2>
+          <p class="mt-2 text-lg leading-8 text-gray-600 text-left">
+            Learn how to grow your business with our expert advice.
+          </p>
+        </div>
 
-  <!-- คอลัมน์ขวา -->
-  <div class="text-right">
-    <button @click="openModal" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-      Comment
-    </button>
-  </div>
-</div>
+        <!-- คอลัมน์ขวา -->
+        <div class="text-right">
+          <button @click="openModal" class="bg-[#4f46e5] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Comment
+          </button>
+        </div>
+      </div>
 
- <!-- Modal -->
- <div v-if="isModalOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50">
-    <div class="bg-white p-5 rounded-lg shadow-lg w-1/2">
-      <h2 class="text-xl font-semibold mb-4">Add your comment</h2>
-      
-<!-- Form -->
-<form @submit.prevent="submitComment">
-  <!-- Title -->
-  <div class="mb-4">
-    <label for="title" class="block text-gray-700">Title:</label>
-    <input 
-      id="title" 
-      v-model="title" 
-      type="text" 
-      class="mt-1 block w-full p-2 border rounded" 
-      required 
-    />
-  </div>
+      <!-- Modal -->
+      <div v-if="isModalOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50">
+        <div class="bg-white p-5 rounded-lg shadow-lg w-1/2">
+          <h2 class="text-xl font-semibold mb-4">Add your comment</h2>
 
-  <!-- Comment -->
-  <div class="mb-4">
-    <label for="comment" class="block text-gray-700">Comment:</label>
-    <textarea 
-      id="comment" 
-      v-model="comment" 
-      class="mt-1 block w-full p-2 border rounded" 
-      rows="4" 
-      required>
+          <!-- Form -->
+          <form @submit.prevent="submitComment">
+            <!-- Title -->
+            <div class="mb-4">
+              <label for="title" class="block text-gray-700">Title:</label>
+              <input id="title" v-model="title" type="text" class="mt-1 block w-full p-2 border rounded" required />
+            </div>
+
+            <!-- Comment -->
+            <div class="mb-4">
+              <label for="comment" class="block text-gray-700">Comment:</label>
+              <textarea id="comment" v-model="comment" class="mt-1 block w-full p-2 border rounded" rows="4" required>
     </textarea>
-  </div>
+            </div>
 
-  <!-- Name -->
-  <div class="mb-4">
-    <label for="name" class="block text-gray-700">Name:</label>
-    <input 
-      id="name" 
-      v-model="name" 
-      type="text" 
-      class="mt-1 block w-full p-2 border rounded" 
-      required 
-    />
-  </div>
+            <!-- Name -->
+            <div class="mb-4">
+              <label for="name" class="block text-gray-700">Name:</label>
+              <input id="name" v-model="name" type="text" class="mt-1 block w-full p-2 border rounded" required />
+            </div>
 
-  <!-- Gmail -->
-  <div class="mb-4">
-    <label for="gmail" class="block text-gray-700">Gmail:</label>
-    <input 
-      id="gmail" 
-      v-model="gmail" 
-      type="email" 
-      class="mt-1 block w-full p-2 border rounded" 
-      required 
-    />
-  </div>
+            <!-- Gmail -->
+            <div class="mb-4">
+              <label for="gmail" class="block text-gray-700">Gmail:</label>
+              <input id="gmail" v-model="gmail" type="email" class="mt-1 block w-full p-2 border rounded" required />
+            </div>
 
-  <!-- Buttons -->
-  <div class="flex justify-end">
-    <button @click="closeModal" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded mr-2">Close</button>
-    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
-  </div>
-</form>
+            <!-- Buttons -->
+            <div class="flex justify-end">
+              <button @click="closeModal"
+                class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded mr-2">Close</button>
+              <button type="submit"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+            </div>
+          </form>
 
 
-    </div>
-  </div>
-
-  <div class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-    <article v-for="post in posts" :key="post._id" class="flex max-w-xl flex-col items-start justify-between">
-      <div class="flex items-center gap-x-4 text-xs">
-        <!-- แสดงเวลาโพสต์ -->
-        <time :datetime="post.time_stamp" class="text-gray-500">{{ post.time_stamp }}</time>
-        <!-- แสดงหัวข้อของโพสต์ -->
-        <a href="#" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">{{ post.title }}</a>
+        </div>
       </div>
-      <div class="group relative">
-        <!-- แสดงคอมเมนต์ -->
-        <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-          <span class="absolute inset-0"></span>
-          {{ post.comment }}
-        </h3>
-        <!-- แสดงชื่อและอีเมลผู้โพสต์ -->
-        <p class="mt-5 text-sm leading-6 text-gray-600">Posted by: {{ post.name }} | Gmail: {{ post.gmail }}</p>
+
+      <div
+        class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+        <article v-for="post in posts" :key="post._id" :class="{
+          'border-blue-500': isLoading && currentPost._id === post._id,
+          'border': true
+        }" class="flex max-w-xl flex-col items-start justify-between rounded-lg p-4 transition-colors duration-200 hover:bg-blue-100 relative"
+          @mousedown="startPostEdit(post)" @mouseup="cancelPostEdit" @mouseleave="cancelPostEdit"
+          @touchstart="startPostEdit(post)" @touchend="cancelPostEdit" @touchcancel="cancelPostEdit">
+          <!-- แสดงแอนิเมชันการโหลด -->
+          <div v-if="isLoading && currentPost._id === post._id"
+            class="absolute inset-0 flex items-center justify-center bg-white bg-opacity-75 rounded-lg z-50">
+            <div class="loader"></div>
+          </div>
+
+          <!-- เนื้อหาภายใน article -->
+          <div :class="{ 'text-white': isLoading && currentPost._id === post._id }" class="w-full">
+            <div class="flex items-center gap-x-4 text-xs w-full">
+              <time :datetime="post.time_stamp" class="">{{ post.time_stamp }}</time>
+              <span class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium ">
+                {{ post.title }}
+              </span>
+              <button @click="deletePost(post._id)"
+                class="hover:text-red-700 font-bold ml-auto transition-colors duration-200" title="Delete post">
+                X
+              </button>
+            </div>
+
+            <div class="group relative text-center mt-4 w-full">
+              <h3 class="text-lg font-semibold leading-6 ">
+                {{ post.comment }}
+              </h3>
+              <p class="mt-5 text-sm leading-6 ">
+                Posted by: {{ post.name }} | Gmail: {{ post.gmail }}
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Modal สำหรับแก้ไขโพสต์ -->
+        <div v-if="isEditModalOpen"
+          class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50">
+          <div class="bg-white p-5 rounded-lg shadow-lg w-1/2">
+            <h2 class="text-xl font-semibold mb-4">Edit Post</h2>
+
+            <form @submit.prevent="submitPostEdit">
+              <div class="mb-4">
+                <label for="title" class="block text-gray-700">Title:</label>
+                <input v-model="currentPost.title" id="title" type="text" class="mt-1 block w-full p-2 border rounded"
+                  required />
+              </div>
+              <div class="mb-4">
+                <label for="comment" class="block text-gray-700">Comment:</label>
+                <textarea v-model="currentPost.comment" id="comment" class="mt-1 block w-full p-2 border rounded"
+                  rows="4" required></textarea>
+              </div>
+              <div class="flex justify-end">
+                <button @click="closeEditModal"
+                  class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded mr-2">
+                  Close
+                </button>
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  Save
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-    </article>
-</div>
+
+
+
+
 
     </div>
   </div>
@@ -332,9 +376,8 @@
   <div id="Applicant" class="pt-40">
     <div class=" sm:px-0">
       <h3 class="text-2xl font-bold leading-7 text-gray-900">Applicant Information</h3>
-      <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Personal details and application.</p>
     </div>
-    <div class="mt-6 border-t border-gray-100">
+    <div class="mt-10 border-t border-gray-100">
       <dl class="divide-y divide-gray-100">
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <dt class="text-sm font-medium leading-6 text-gray-900">Full name</dt>
@@ -354,14 +397,15 @@
         </div>
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <dt class="text-sm font-medium leading-6 text-gray-900">About</dt>
-          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">I am interested in work related to frontend and backend, and in the visualization and backend work that involves complex methods.</dd>
+          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">I am interested in work related to
+            frontend and backend, and in the visualization and backend work that involves complex methods.</dd>
         </div>
         <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
           <dt class="text-sm font-medium leading-6 text-gray-900">Attachments</dt>
           <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
             <ul role="list" class="divide-y divide-gray-100 rounded-md border border-gray-200">
-              <li class="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
-                <div class="flex w- flex-1 items-center">
+              <li class="flex items-center justify-between py-4 pl-4 pr-5 text-sm">
+                <div class="flex flex-1 items-center">
                   <PaperClipIcon class="h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
                   <div class="ml-4 flex flex-1 gap-2">
                     <span class="truncate font-medium">resume_Thammakit.pdf</span>
@@ -369,8 +413,9 @@
                   </div>
                 </div>
                 <div class="ml-4 flex-shrink-0">
-        <a href="#" @click.prevent="downloadFile" class="font-medium text-indigo-600 hover:text-indigo-500">Download</a>
-      </div>
+                  <a href="#" @click.prevent="downloadFile"
+                    class="font-medium text-indigo-600 hover:text-indigo-500">Download</a>
+                </div>
               </li>
             </ul>
           </dd>
@@ -379,6 +424,11 @@
     </div>
   </div>
 
+  <div>
+    <button v-show="isVisible" @click="scrollToTop" class="scroll-to-top">
+      Scroll Top
+    </button>
+  </div>
 
 
   <Footer />
@@ -388,10 +438,46 @@
 
 <script setup>
 
+const isEditModalOpen = ref(false);
+const isLoading = ref(false);
+const currentPost = ref({});
+let pressTimer = null;
+import { onBeforeUnmount } from 'vue';
 
+// ตัวแปรสำหรับเก็บสถานะของปุ่ม scroll to top
+const isVisible = ref(false);
 
+// ฟังก์ชันเลื่อนกลับไปด้านบน
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+};
 
+// ฟังก์ชันเลื่อนไปยังส่วนที่ต้องการ
+const scrollToSection = (href) => {
+  const element = document.querySelector(href);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    mobileMenuOpen.value = false; // Close the mobile menu after clicking
+  }
+};
 
+// ฟังก์ชันตรวจสอบการเลื่อนเพื่อแสดงหรือซ่อนปุ่ม
+const handleScroll = () => {
+  isVisible.value = window.scrollY > 200;
+};
+
+// เพิ่มตัวดักจับ event เมื่อ component ถูก mount
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll);
+});
+
+// ลบตัวดักจับ event เมื่อ component ถูกทำลาย
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', handleScroll);
+});
 
 
 
@@ -469,7 +555,7 @@ const submitComment = async () => {
 // ฟังก์ชันดึงข้อมูลจาก MongoDB
 const fetchComments = async () => {
   try {
-    const response = await fetch(`${apiUrl}/api/comments`, {redirect: 'follow'});
+    const response = await fetch(`${apiUrl}/api/comments`, { redirect: 'follow' });
     if (response.ok) {
       const data = await response.json();
       posts.value = data.data; // เก็บข้อมูลที่ดึงมาในตัวแปร 'comments'
@@ -486,6 +572,108 @@ onMounted(() => {
   fetchComments();
 });
 
+const deletePost = async (postId) => {
+  try {
+    // เรียก API สำหรับลบโพสต์ โดยส่ง `postId` ไปใน URL
+    const response = await fetch(`${apiUrl}/api/comments/${postId}`, {
+      method: 'DELETE',
+    });
+
+    if (response.ok) {
+      // ลบโพสต์ออกจาก list ถ้าการลบใน backend สำเร็จ
+      posts.value = posts.value.filter(post => post._id !== postId);
+
+      // แสดง SweetAlert แจ้งเตือนการลบสำเร็จ
+      Swal.fire({
+        icon: 'success',
+        title: 'Deleted!',
+        text: 'Post deleted successfully!',
+        confirmButtonText: 'OK'
+      });
+    } else {
+      // แสดง SweetAlert แจ้งเตือนหากลบไม่สำเร็จ
+      Swal.fire({
+        icon: 'error',
+        title: 'Failed',
+        text: 'Failed to delete post. Please try again.',
+        confirmButtonText: 'Retry'
+      });
+    }
+  } catch (error) {
+    console.error('Error deleting post:', error);
+
+    // แสดง SweetAlert เมื่อเกิดข้อผิดพลาด
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'An error occurred while deleting the post.',
+      confirmButtonText: 'Retry'
+    });
+  }
+};
+
+
+const startPostEdit = (post) => {
+  // แสดงการโหลดก่อนเปิด modal
+  isLoading.value = true;
+  currentPost.value = { ...post };
+
+  // ตั้งเวลาสำหรับการกดค้าง 0.5 วินาที
+  pressTimer = setTimeout(() => {
+    isLoading.value = false; // หยุดแอนิเมชันการโหลดเมื่อครบเวลา
+    openEditModal();
+  }, 500);
+};
+
+const cancelPostEdit = () => {
+  // ยกเลิกการเปิด modal และหยุดการโหลดถ้าผู้ใช้ปล่อยก่อนเวลา 0.5 วินาที
+  clearTimeout(pressTimer);
+  isLoading.value = false;
+};
+
+const openEditModal = () => {
+  isEditModalOpen.value = true;
+};
+
+const closeEditModal = () => {
+  isEditModalOpen.value = false;
+};
+
+const submitPostEdit = async () => {
+  try {
+    const response = await fetch(`${apiUrl}/api/comments/${currentPost.value._id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        title: currentPost.value.title,
+        comment: currentPost.value.comment,
+        name: currentPost.value.name,
+        gmail: currentPost.value.gmail,
+      }),
+    });
+
+    if (response.ok) {
+      const updatedPost = await response.json();
+
+      // อัปเดตข้อมูลใน posts หลังจากการแก้ไขสำเร็จ
+      const postIndex = posts.value.findIndex((p) => p._id === currentPost.value._id);
+      if (postIndex !== -1) {
+        posts.value[postIndex] = updatedPost.data;
+      }
+
+      // ปิด modal หลังจากอัปเดตสำเร็จ
+      closeEditModal();
+      alert('Post updated successfully!');
+    } else {
+      alert('Failed to update the post. Please try again.');
+    }
+  } catch (error) {
+    console.error('Error updating post:', error);
+    alert('An error occurred while updating the post.');
+  }
+};
 
 
 const downloadFile = () => {
@@ -610,38 +798,90 @@ console.log()
 
 
 <style scoped>
+.loader {
+  border: 4px solid #f3f3f3;
+  /* สีขอบที่เบา */
+  border-top: 4px solid #3498db;
+  /* สีของแถบ */
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .item-tl {
   width: 300px;
   transition: 0.5s cubic-bezier(0.85, -1.38, .03, 1.54);
-  transform-origin: top left; /* ขยายจากมุมบนซ้าย */
+  transform-origin: top left;
+  /* ขยายจากมุมบนซ้าย */
 }
 
 .item-tr {
   width: 300px;
   transition: 0.5s cubic-bezier(0.85, -1.38, .03, 1.54);
-  transform-origin: top right; /* ขยายจากมุมบนขวา */
+  transform-origin: top right;
+  /* ขยายจากมุมบนขวา */
 }
 
 .item-bl {
   width: 300px;
   transition: 0.5s cubic-bezier(0.85, -1.38, .03, 1.54);
-  transform-origin: bottom left; /* ขยายจากมุมล่างซ้าย */
+  transform-origin: bottom left;
+  /* ขยายจากมุมล่างซ้าย */
 }
 
 .item-br {
   width: 300px;
   transition: 0.5s cubic-bezier(0.85, -1.38, .03, 1.54);
-  transform-origin: bottom right; /* ขยายจากมุมล่างขวา */
+  transform-origin: bottom right;
+  /* ขยายจากมุมล่างขวา */
 }
 
 .item-tl:hover,
 .item-tr:hover,
 .item-bl:hover,
 .item-br:hover {
-  transform: scale(2.2); /* ขยายขนาด 2.2 เท่า */
+  transform: scale(2.2);
+  /* ขยายขนาด 2.2 เท่า */
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+
+.scroll-to-top {
+  position: fixed;
+  padding-inline: 10px; /* เพิ่ม padding ในแกน X (ซ้ายและขวา) */
+  bottom: 20px;
+  right: 20px;
+  background-color: #fff; /* พื้นหลังสีขาว */
+  color: #007bff; /* สีฟ้า */
+  width: auto;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  white-space: nowrap; /* ทำให้ข้อความไม่ตัดบรรทัด */
+  overflow: hidden; /* ซ่อนส่วนที่เกิน */
+  text-overflow: ellipsis; /* เพิ่ม ... หากข้อความยาวเกิน */
+}
+
+.scroll-to-top:hover {
+  background-color: #4f46e5; /* เปลี่ยนพื้นหลังเป็นสีฟ้าเมื่อ hover */
+  color: #fff; /* เปลี่ยนสีตัวอักษรเป็นสีขาวเมื่อ hover */
 }
 </style>

@@ -3,7 +3,6 @@ import mongoose from 'mongoose';
 import expressSession from 'express-session';
 import flash from 'connect-flash';
 import fileUpload from 'express-fileupload';
-import cors from 'cors';
 import ejs from 'ejs';
 
 // controller
@@ -24,11 +23,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());
 
+import cors from 'cors';
+
 // CORS middleware configuration
 app.use(cors({
-  origin: '*',
-  methods: ['GET', 'POST']
+  origin: '*', // สามารถระบุเฉพาะโดเมนที่อนุญาต เช่น 'http://localhost:5173'
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // เพิ่ม DELETE และ OPTIONS
 }));
+
 
 app.use(expressSession({
   secret: 'nodejsblog',

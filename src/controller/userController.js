@@ -46,3 +46,65 @@ export const getcomment = async (req, res) => {
     res.status(500).json({ message: 'Error fetching data', error: error.message });
   }
 };
+// ฟังก์ชันสำหรับลบข้อมูลผู้ใช้
+export const deleteComment = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // ตรวจสอบว่า id ถูกส่งมาหรือไม่
+    if (!id) {
+      return res.status(400).json({ message: 'ID is required' });
+    }
+
+    // ลบข้อมูลใน MongoDB โดยค้นหาตาม id
+    const deletedUser = await User.findByIdAndDelete(id);
+
+    // ตรวจสอบว่ามีข้อมูลที่ถูกลบหรือไม่
+    if (!deletedUser) {
+      return res.status(404).json({ message: 'Comment not found' });
+    }
+
+    // ส่งการตอบกลับกลับไปยัง client เมื่อการลบสำเร็จ
+    res.status(200).json({ message: 'Comment deleted successfully' });
+  } catch (error) {
+    // จับข้อผิดพลาดและส่งข้อความกลับไปยัง client
+    console.error('Error deleting comment:', error);
+    res.status(500).json({ message: 'Error deleting comment', error: error.message });
+  }
+};
+// ฟังก์ชันสำหรับแก้ไขข้อมูลคอมเมนต์
+export const editComment = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title, comment, name, gmail } = req.body;
+
+    // ตรวจสอบว่าข้อมูลที่ต้องการแก้ไขถูกส่งมาครบหรือไม่
+    if (!title || !comment || !name || !gmail) {
+      return res.status(400).json({ message: 'All fields are required' });
+    }
+
+    // ค้นหาและอัปเดตข้อมูลใน MongoDB
+    const updatedComment = await User.findByIdAndUpdate(
+      id,
+      {
+        title,
+        comment,
+        name,
+        gmail,
+      },
+      { new: true } // เพื่อให้ส่งข้อมูลที่อัปเดตล่าสุดกลับมา
+    );
+
+    // ตรวจสอบว่าพบคอมเมนต์ที่ต้องการแก้ไขหรือไม่
+    if (!updatedComment) {
+      return res.status(404).json({ message: 'Comment not found' });
+    }
+
+    // ส่งการตอบกลับกลับไปยัง client เมื่อการอัปเดตสำเร็จ
+    res.status(200).json({ message: 'Comment updated successfully', data: updatedComment });
+  } catch (error) {
+    // จับข้อผิดพลาดและส่งข้อความกลับไปยัง client
+    console.error('Error updating comment:', error);
+    res.status(500).json({ message: 'Error updating comment', error: error.message });
+  }
+};
