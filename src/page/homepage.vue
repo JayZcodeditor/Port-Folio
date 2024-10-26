@@ -660,6 +660,16 @@ const closeEditModal = () => {
 
 const submitPostEdit = async () => {
   try {
+    // แสดง swal แบบ loading ตอนเริ่ม
+    Swal.fire({
+      title: 'Updating...',
+      text: 'Please wait while the post is being updated.',
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
+
     const response = await fetch(`${apiUrl}/api/comments/${currentPost.value._id}`, {
       method: 'PUT',
       headers: {
@@ -684,15 +694,34 @@ const submitPostEdit = async () => {
 
       // ปิด modal หลังจากอัปเดตสำเร็จ
       closeEditModal();
-      alert('Post updated successfully!');
+
+      // แสดง swal ว่าอัปเดตสำเร็จ
+      Swal.fire({
+        icon: 'success',
+        title: 'Success!',
+        text: 'Post updated successfully!',
+        timer: 2000,
+        showConfirmButton: false,
+      });
     } else {
-      alert('Failed to update the post. Please try again.');
+      // แสดง swal เมื่อการอัปเดตล้มเหลว
+      Swal.fire({
+        icon: 'error',
+        title: 'Failed',
+        text: 'Failed to update the post. Please try again.',
+      });
     }
   } catch (error) {
     console.error('Error updating post:', error);
-    alert('An error occurred while updating the post.');
+    // แสดง swal เมื่อเกิดข้อผิดพลาด
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'An error occurred while updating the post.',
+    });
   }
 };
+
 
 
 const downloadFile = () => {
