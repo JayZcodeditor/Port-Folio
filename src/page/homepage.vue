@@ -328,7 +328,7 @@
           {{ post.comment }}
         </h3>
         <p class="mt-5 text-sm leading-6">
-          Posted by: {{ post.name }} | Gmail: {{ post.gmail }}
+          Posted by: {{ post.name }} | Email: {{ post.gmail }}
         </p>
       </div>
     </div>
