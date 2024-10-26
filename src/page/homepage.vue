@@ -317,10 +317,10 @@
         <span class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium">
           {{ post.title }}
         </span>
-        <button @click="deletePost(post._id)"
+        <!-- <button @click="deletePost(post._id)"
           class="hover:text-red-700 font-bold ml-auto transition-colors duration-200 z-30 relative" title="Delete post">
           X
-        </button>
+        </button> -->
       </div>
 
       <div class="group relative text-center mt-4 w-full">
