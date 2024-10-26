@@ -1,4 +1,4 @@
-## 🌟 โปรเจกต์ Vue 3 + Vite + Tailwind + Vercel + Express + JavaScript + MongoDB
+## โปรเจกต์ <img src="https://static-00.iconduck.com/assets.00/vue-icon-512x442-j09z7tua.png" height="30" alt="Vue logo" /> Vue 3 + Vite + Tailwind + Vercel + Express + JavaScript + MongoDB
 
 โปรเจกต์นี้ถูกสร้างขึ้นเพื่อทำความเข้าใจการใช้ **Vue 3** ร่วมกับ **MongoDB** รวมถึงการ Deploy บนบริการโฮสต์อย่าง **Vercel** โดยโปรเจกต์นี้สามารถเชื่อมต่อกับ MongoDB ได้สำเร็จและให้ประสบการณ์ที่ราบรื่นจากการพัฒนาไปจนถึงการใช้งานจริง
 
@@ -104,6 +104,8 @@
     alt="vscode logo" />
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" height="30" width="42"
     alt="git logo" />
+    <img src="https://www.svgrepo.com/show/331488/mongodb.svg" height="30" 
+    alt="bootstrap logo" />
 <img src="https://motiongraphicplus.com/wp-content/uploads/2023/09/chat-gpt-logo-png.png" height="30" 
     alt="ChatGPT logo" />
 <img src="https://www.svgrepo.com/show/327408/logo-vercel.svg" height="30" 
