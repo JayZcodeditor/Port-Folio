@@ -89,11 +89,11 @@
     alt="nodejs logo" />
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" height="30" width="42"
     alt="bootstrap logo" />
-<img src="https://openai.com/content/images/2022/05/openai-avatar.png" height="30" width="30"
+<img src="https://www.google.com/imgres?q=git%20logo&imgurl=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fe%2Fe0%2FGit-logo.svg&imgrefurl=https%3A%2F%2Fcommons.wikimedia.org%2Fwiki%2FFile%3AGit-logo.svg&docid=Qzj8717U8pISkM&tbnid=jiWk1wp2CVAo1M&vet=12ahUKEwj5_u3NjqyJAxXXb2wGHUwFA28QM3oECBoQAA..i&w=800&h=336&hcb=2&ved=2ahUKEwj5_u3NjqyJAxXXb2wGHUwFA28QM3oECBoQAA" height="30" width="30"
     alt="git logo" />
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" height="30" width="42"
     alt="vscode logo" />
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" height="30" width="42"
     alt="git logo" />
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/640px-Google_%22G%22_Logo.svg.png" height="30" width="30"
+<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fmotiongraphicplus.com%2Farchives%2F14609&psig=AOvVaw2xoyvTswidWcjBTlhNO1JL&ust=1730034484880000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIi4x-qOrIkDFQAAAAAdAAAAABAE" height="30" width="30"
     alt="ChatGPT logo" />
