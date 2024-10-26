@@ -79,6 +79,8 @@
   }
 
 # Languages and Tools: 🛠
+<img src="https://static-00.iconduck.com/assets.00/vue-icon-512x442-j09z7tua.png" height="30" 
+    alt="ChatGPT logo" />
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="30" width="42"
     alt="javascript logo" />
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height="30" width="42"
@@ -87,8 +89,7 @@
     alt="css3 logo" />
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" height="30" width="42"
     alt="nodejs logo" />
-<img src="https://www.svgrepo.com/show/354512/vercel.svg" height="30" 
-    alt="bootstrap logo" />
+
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/2560px-Tailwind_CSS_Logo.svg.png" height="30" 
     alt="git logo" />
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" height="30" width="42"
@@ -97,5 +98,5 @@
     alt="git logo" />
 <img src="https://motiongraphicplus.com/wp-content/uploads/2023/09/chat-gpt-logo-png.png" height="30" 
     alt="ChatGPT logo" />
-    <img src="https://static-00.iconduck.com/assets.00/vue-icon-512x442-j09z7tua.png" height="30" 
-    alt="ChatGPT logo" />
+    <img src="https://www.svgrepo.com/show/327408/logo-vercel.svg" height="30" 
+    alt="bootstrap logo" />
