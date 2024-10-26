@@ -297,73 +297,74 @@
       </div>
 
       <div
-        class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-        <article v-for="post in posts" :key="post._id" :class="{
-          'border-blue-500': isLoading && currentPost._id === post._id,
-          'border': true
-        }" class="flex max-w-xl flex-col items-start justify-between rounded-lg p-4 transition-colors duration-200 hover:bg-blue-100 relative"
-          @mousedown="startPostEdit(post)" @mouseup="cancelPostEdit" @mouseleave="cancelPostEdit"
-          @touchstart="startPostEdit(post)" @touchend="cancelPostEdit" @touchcancel="cancelPostEdit">
-          <!-- แสดงแอนิเมชันการโหลด -->
-          <div v-if="isLoading && currentPost._id === post._id"
-            class="absolute inset-0 flex items-center justify-center bg-white bg-opacity-75 rounded-lg z-50">
-            <div class="loader"></div>
-          </div>
+  class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+  <article v-for="post in posts" :key="post._id" :class="{
+        'border-blue-500': isLoading && currentPost._id === post._id,
+        'border': true
+      }" class="flex max-w-xl flex-col items-start justify-between rounded-lg p-4 transition-colors duration-200 hover:bg-blue-100 relative"
+    @mousedown="startPostEdit(post)" @mouseup="cancelPostEdit" @mouseleave="cancelPostEdit"
+    @touchstart="startPostEdit(post)" @touchend="cancelPostEdit" @touchcancel="cancelPostEdit">
+    <!-- แสดงแอนิเมชันการโหลด -->
+    <div v-if="isLoading && currentPost._id === post._id"
+      class="absolute inset-0 flex items-center justify-center bg-white bg-opacity-75 rounded-lg z-10">
+      <div class="loader"></div>
+    </div>
 
-          <!-- เนื้อหาภายใน article -->
-          <div :class="{ 'text-white': isLoading && currentPost._id === post._id }" class="w-full">
-            <div class="flex items-center gap-x-4 text-xs w-full">
-              <time :datetime="post.time_stamp" class="">{{ post.time_stamp }}</time>
-              <span class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium ">
-                {{ post.title }}
-              </span>
-              <button @click="deletePost(post._id)"
-                class="hover:text-red-700 font-bold ml-auto transition-colors duration-200" title="Delete post">
-                X
-              </button>
-            </div>
-
-            <div class="group relative text-center mt-4 w-full">
-              <h3 class="text-lg font-semibold leading-6 ">
-                {{ post.comment }}
-              </h3>
-              <p class="mt-5 text-sm leading-6 ">
-                Posted by: {{ post.name }} | Gmail: {{ post.gmail }}
-              </p>
-            </div>
-          </div>
-        </article>
-
-        <!-- Modal สำหรับแก้ไขโพสต์ -->
-        <div v-if="isEditModalOpen"
-          class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50">
-          <div class="bg-white p-5 rounded-lg shadow-lg w-1/2">
-            <h2 class="text-xl font-semibold mb-4">Edit Post</h2>
-
-            <form @submit.prevent="submitPostEdit">
-              <div class="mb-4">
-                <label for="title" class="block text-gray-700">Title:</label>
-                <input v-model="currentPost.title" id="title" type="text" class="mt-1 block w-full p-2 border rounded"
-                  required />
-              </div>
-              <div class="mb-4">
-                <label for="comment" class="block text-gray-700">Comment:</label>
-                <textarea v-model="currentPost.comment" id="comment" class="mt-1 block w-full p-2 border rounded"
-                  rows="4" required></textarea>
-              </div>
-              <div class="flex justify-end">
-                <button @click="closeEditModal"
-                  class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded mr-2">
-                  Close
-                </button>
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                  Save
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
+    <!-- เนื้อหาภายใน article -->
+    <div :class="{ 'text-white': isLoading && currentPost._id === post._id }" class="w-full z-20 relative">
+      <div class="flex items-center gap-x-4 text-xs w-full">
+        <time :datetime="post.time_stamp">{{ post.time_stamp }}</time>
+        <span class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium">
+          {{ post.title }}
+        </span>
+        <button @click="deletePost(post._id)"
+          class="hover:text-red-700 font-bold ml-auto transition-colors duration-200 z-30 relative" title="Delete post">
+          X
+        </button>
       </div>
+
+      <div class="group relative text-center mt-4 w-full">
+        <h3 class="text-lg font-semibold leading-6">
+          {{ post.comment }}
+        </h3>
+        <p class="mt-5 text-sm leading-6">
+          Posted by: {{ post.name }} | Gmail: {{ post.gmail }}
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <!-- Modal สำหรับแก้ไขโพสต์ -->
+  <div v-if="isEditModalOpen"
+    class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50">
+    <div class="bg-white p-5 rounded-lg shadow-lg w-1/2">
+      <h2 class="text-xl font-semibold mb-4">Edit Post</h2>
+
+      <form @submit.prevent="submitPostEdit">
+        <div class="mb-4">
+          <label for="title" class="block text-gray-700">Title:</label>
+          <input v-model="currentPost.title" id="title" type="text" class="mt-1 block w-full p-2 border rounded"
+            required />
+        </div>
+        <div class="mb-4">
+          <label for="comment" class="block text-gray-700">Comment:</label>
+          <textarea v-model="currentPost.comment" id="comment" class="mt-1 block w-full p-2 border rounded"
+            rows="4" required></textarea>
+        </div>
+        <div class="flex justify-end">
+          <button @click="closeEditModal"
+            class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded mr-2">
+            Close
+          </button>
+          <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 
 
 
