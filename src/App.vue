@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { Analytics } from '@vercel/analytics/react';
-// ไม่จำเป็นต้อง import Homepage เพราะเนื้อหาจะถูกแสดงผ่าน router-view
+import { inject } from '@vercel/analytics';
+
+// เรียกใช้ฟังก์ชัน inject เพื่อให้เริ่มทำงานการติดตามเมื่อแอปพลิเคชันโหลด
+inject();
 </script>
 
 <template>
   <!-- router-view จะแสดงเนื้อหาของแต่ละ route -->
   <router-view />
-  <Analytics />
 </template>
 
 <style scoped>
