@@ -279,7 +279,7 @@
 
             <!-- Gmail -->
             <div class="mb-4">
-              <label for="gmail" class="block text-gray-700">Gmail:</label>
+              <label for="gmail" class="block text-gray-700">Email:</label>
               <input id="gmail" v-model="gmail" type="email" class="mt-1 block w-full p-2 border rounded" required />
             </div>
 
@@ -506,6 +506,15 @@ const error = ref('');
 
 const submitComment = async () => {
   try {
+     // แสดง SweetAlert เพื่อแจ้งว่ากำลังทำการบันทึกข้อมูล
+     Swal.fire({
+      title: 'Submitting...',
+      text: 'Please wait while we submit your comment.',
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading(); // แสดงการโหลดระหว่างการประมวลผล
+      }
+    });
     // ส่งข้อมูลไปยัง backend โดยใช้ fetch
     const response = await fetch(`${apiUrl}/api/submit-form`, {
       method: 'POST', // กำหนดให้ใช้ method POST
@@ -575,6 +584,15 @@ onMounted(() => {
 
 const deletePost = async (postId) => {
   try {
+    // แสดง SweetAlert เพื่อแจ้งว่ากำลังลบโพสต์
+    Swal.fire({
+      title: 'Deleting...',
+      text: 'Please wait while we delete the post.',
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading(); // แสดงการโหลดระหว่างการประมวลผล
+      }
+    });
     // เรียก API สำหรับลบโพสต์ โดยส่ง `postId` ไปใน URL
     const response = await fetch(`${apiUrl}/api/comments/${postId}`, {
       method: 'DELETE',
